@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getStoryIds, getStory} from '../services/hnApi';
+import {getStoryIds} from '../services/hnApi';
 import { Story } from '../components/Story';
 
 export const StoriesContainer = () => {
@@ -7,9 +7,7 @@ export const StoriesContainer = () => {
   
     useEffect(() => {
       getStoryIds().then(result => setStoryIds(result));
-      // getStory('26061892').then(result => console.log(result));
-      // console.log(getStoryIdeas());
     }, []);
     
-    return storyIds.map(storyId => <Story storyId={storyId} /> );
+    return storyIds.map(storyId => <Story key={storyId} storyId={storyId} /> );
   };
