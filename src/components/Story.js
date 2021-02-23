@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { getStory } from "../services/hnApi";
+import {StoryTitles, StoryWrapper, StoryMeta, StoryMetaElement} from '../styles/StoryStyles';
 
 
 export const Story = ({storyId}) => {
@@ -8,11 +9,20 @@ export const Story = ({storyId}) => {
         getStory(storyId).then(data => data && data.url && setStory(data)); // validation when get stories
     }, []); 
     return story && story.url ? (
-        <div>
+        <StoryWrapper data-testid="story">
+            <StoryTitles>
             <a href={story.url}>{story.title}</a>
-            <p></p>
-            By : <p>{story.by}</p>
-            Posted : <p>{story.time}</p>
-        </div>
+            </StoryTitles>
+
+            <StoryMeta>
+                <span className="story__by" data-testid="story-by">
+                <StoryMetaElement color="#000">By :</StoryMetaElement>{story.by}
+                </span>
+                <span className="story__time" data-testid="story-time">
+                <StoryMetaElement color="#000">Posted :</StoryMetaElement>{` `}
+                {story.time}
+                </span>
+            </StoryMeta>
+        </StoryWrapper>
     ): null;
 }
