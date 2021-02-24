@@ -15,7 +15,7 @@ border-top : 1px solid #cccccc;
 }
 `;
 
-export const StoryTitles = styled.h1`
+export const StoryTitle = styled.h1`
     margin-bottom : 5px;
     font-size : 18px;
     line-height : 1.8;
@@ -32,6 +32,11 @@ export const StoryTitles = styled.h1`
 
 export const StoryMeta = styled.div`
     font-style : italic;
+
+     >span:first-child{
+         margin-right: 10px;
+     } 
+
      >span:not(:first-child):before {
          content: '';
          margin-right: 7px;
@@ -46,3 +51,5 @@ export const StoryMetaElement = styled.span`
      font-weight: bold;
      color: ${props => props.color || 'red'};
 `; 
+
+
