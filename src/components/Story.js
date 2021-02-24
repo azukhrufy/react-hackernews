@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { getStory } from "../services/hnApi";
-import {StoryTitles, StoryWrapper, StoryMeta, StoryMetaElement} from '../styles/StoryStyles';
+import {StoryTitle, StoryWrapper, StoryMeta, StoryMetaElement} from '../styles/StoryStyles';
 
 
 export const Story = ({storyId}) => {
@@ -10,9 +10,9 @@ export const Story = ({storyId}) => {
     }, []); 
     return story && story.url ? (
         <StoryWrapper data-testid="story">
-            <StoryTitles>
+            <StoryTitle>
             <a href={story.url}>{story.title}</a>
-            </StoryTitles>
+            </StoryTitle>
 
             <StoryMeta>
                 <span className="story__by" data-testid="story-by">
