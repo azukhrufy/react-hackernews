@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { MAX_STORIES, STORIES_INCREMENT } from '../constants/index';
+import {debounce} from '../utils/debounce';
 
 export const useInfiniteScroll = () => {
 	const [loading, setloading] = useState(false);
 	const [count, setCount] = useState(STORIES_INCREMENT);
 
-	const handleScroll = () => {
+	const handleScroll = debounce(() => {
 		if (
 			window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight ||
 			loading
@@ -13,7 +14,7 @@ export const useInfiniteScroll = () => {
             return false;
 		}
         setloading(true);
-	};
+	}, 500);
 
     useEffect(() => {
         if(!loading) return;
